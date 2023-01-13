@@ -1,0 +1,4 @@
+brew install libssh2
+pecl install ssh2-1.2
+
+https://phpseclib.com/docs/commands

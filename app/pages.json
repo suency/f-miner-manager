@@ -1,0 +1,96 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "爆块信息"
+			}
+		},
+		{
+			"path": "pages/workers/workers",
+			"style": {
+				"navigationBarTitleText": "工作主机"
+			}
+		}
+        ,{
+            "path" : "pages/blocks/blocks",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "区块信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/operations/operations",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "操作",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/node/node",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "节点信息",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor": "#05022A",
+				"navigationBarTextStyle":"white"
+            }
+            
+        }
+        ,{
+            "path" : "pages/tiger/tiger",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+		,{
+		    "path" : "pages/2643/2643",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
+    ],
+	"tabBar": {
+	    "color": "#A6B1C0",
+	    "selectedColor": "#A254F2",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [{
+	        "pagePath": "pages/index/index",
+	        "iconPath": "static/images/home.png",
+	        "selectedIconPath": "static/images/home_s.png",
+	        "text": "爆块信息"
+	    }, {
+	        "pagePath": "pages/workers/workers",
+	        "iconPath": "static/images/computer.png",
+	        "selectedIconPath": "static/images/computer_s.png",
+	        "text": "工作主机"
+	    }, {
+	        "pagePath": "pages/blocks/blocks",
+	        "iconPath": "static/images/blockchain.png",
+	        "selectedIconPath": "static/images/blockchain_s.png",
+	        "text": "区块信息"
+	    }, {
+	        "pagePath": "pages/operations/operations",
+	        "iconPath": "static/images/operation.png",
+	        "selectedIconPath": "static/images/operation_s.png",
+	        "text": "操作"
+	    }]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	}
+}
