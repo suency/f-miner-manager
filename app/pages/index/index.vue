@@ -11,41 +11,87 @@
 			</view>
 			<view class="top">
 				<view class="text">
-					<view>Miner:</view>
-					<view>{{allData.miner}}</view>
+					<view>账户:</view>
+					<view>{{minerInfo.miner}}</view>
+				</view>
+				
+				<view class="text">
+					<view>账户余额:</view>
+					<view>{{minerInfo.balanceStr}}</view>
+				</view>
+				
+				<view class="text">
+					<view>可用余额:</view>
+					<view>{{minerInfo.availableStr}}</view>
+				</view>
+				
+				<view class="text">
+					<view>扇区抵押:</view>
+					<view>{{minerInfo.sectorsPledgeStr}}</view>
+				</view>
+				
+				<view class="text">
+					<view>提供存储服务锁仓:</view>
+					<view>{{minerInfo.lockedFundsStr}}</view>
+				</view>
+				<view><text>\n</text></view>
+				
+				<view class="text">
+					<view>有效算力:</view>
+					<view>{{minerInfo.qualityPowerStr}}</view>
 				</view>
 				<view class="text">
-					<view>Power:</view>
-					<view>{{allData.power}}</view>
+					<view>原值算力:</view>
+					<view>{{minerInfo.rawPowerStr}}</view>
+				</view>
+				
+				<view class="text">
+					<view>累计出块奖励:</view>
+					<view>{{minerInfo.blockRewardStr}}</view>
 				</view>
 				<view class="text">
-					<view>Win:</view>
-					<view>{{allData.win}}</view>
+					<view>累计出块份数:</view>
+					<view>{{minerInfo.blocks}}</view>
 				</view>
 				<view class="text">
-					<view>Miner Balance:</view>
-					<view>{{allData.minerBalance.substr(0,10) + ' STAR'}}</view>
+					<view>排名:</view>
+					<view>{{minerInfo.powerRank}}</view>
+				</view>
+				
+				<view class="text">
+					<view>占比:</view>
+					<view>{{minerInfo.qualityPowerPercentStr}}</view>
+				</view>
+				
+				<view><text>\n</text></view>
+				
+				<view class="text">
+					<view>全部扇区:</view>
+					<view>{{minerInfo.sectorCount}}</view>
 				</view>
 				<view class="text">
-					<view>Vesting:</view>
-					<view>{{allData.vesting.substr(0,10) + ' STAR'}}</view>
+					<view>有效扇区:</view>
+					<view>{{minerInfo.activeCount}}</view>
 				</view>
 				<view class="text">
-					<view>Available:</view>
-					<view>{{allData.available.substr(0,10) + ' STAR'}}</view>
+					<view>错误扇区:</view>
+					<view>{{minerInfo.faultCount}}</view>
 				</view>
 				<view class="text">
-					<view>Worker Balance:</view>
-					<view>{{allData.workerBalance.substr(0,10) + ' STAR'}}</view>
+					<view>恢复扇区:</view>
+					<view>{{minerInfo.recoveryCount}}</view>
 				</view>
+
 			</view>
-			<view class="bottom">
+			
+			
+			<!-- <view class="bottom">
 				<view class="text" v-for="(item,index) in allData.sectors">
 					<view style="font-weight: normal;">{{item}}</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
-		
+
 		<view class="title" style="margin-top: 60rpx;" v-if="!hideJobs">
 			<view>主机任务({{jobs.length}})</view>
 			<view style="visibility: hidden;">主机任务</view>
@@ -66,8 +112,8 @@
 				<view>{{item1[6]}}</view>
 			</view>
 		</view>
-		
-		<view class="title" style="margin-top: 60rpx;">
+
+		<!-- <view class="title" style="margin-top: 60rpx;">
 			<view>x99-爆块列表({{baoData.totalCount}})</view>
 			<view style="visibility: hidden;">主机任务</view>
 		</view>
@@ -82,9 +128,9 @@
 				<view>{{(item.reward / 10**18).toFixed(2) + ' STAR'}}</view>
 			</view>
 		</view>
-		
+
 		<view class="more" @click="displayMore">{{num == 5? "显示更多" : "收起"}}>></view>
-		
+
 		<view class="title" style="margin-top: 60rpx;">
 			<view>2643-爆块列表({{baoData2643.totalCount}})</view>
 			<view style="visibility: hidden;">主机任务</view>
@@ -99,12 +145,12 @@
 				<view>{{(item.reward / 10**18).toFixed(2) + ' STAR'}}</view>
 			</view>
 		</view>
-		
-		<view class="more" @click="displayMore">{{num == 5? "显示更多" : "收起"}}>></view>
-		
 
-		
-<!-- 		<view class="jobs">
+		<view class="more" @click="displayMore">{{num == 5? "显示更多" : "收起"}}>></view>
+
+
+ -->
+		<!-- 		<view class="jobs">
 			<view class="job" v-for="(item1,index1) in jobs">
 				<view class="bar1" :class="{bg_blue:item1[4] == 'PC1',bg_green:item1[4] == 'PC2',bg_pink:item1[4] == 'C1',bg_purple:item1[4] == 'C2',bg_getting:item1[4] == 'GET', bg_ap:item1[4] == 'AP'}"></view>
 				<view class="jobTitle">{{item1[3]}}</view>
@@ -137,10 +183,52 @@
 	export default {
 		data() {
 			return {
-				hideJobs:true,
+				hideJobs: true,
 				baoData: {},
-				baoData2643:{},
-				num:5,
+				baoData2643: {},
+				num: 5,
+				minerInfo: {
+					"miner": "f01390330",
+					"address": "f01390330",
+					"idAddress": "f01390330",
+					"robustAddress": "f2t4v47mhfoyxz7co2m5vlkynwudyew2x72dp63xq",
+					"actorType": "Storage Miner",
+					"balance": 2.27683649592216e+21,
+					"balanceStr": "2,276.8364 FIL",
+					"qualityPower": 410027492048896,
+					"qualityPowerStr": "372.92 TiB",
+					"qualityPowerPercent": 0.000018960503985122578,
+					"qualityPowerPercentStr": "0.00%",
+					"rawPower": 163895952015360,
+					"rawPowerStr": "149.06 TiB",
+					"peerId": "12D3KooWCpq7rCmr263h22jz4CTHxnfxhp6qFuzRtBqLdCWFCDzw",
+					"owner": "f3rqpszb3c6k3t7zanml75pwzgzayfxsjciessg2l44f7nxvceqhiexixqj3ehs2luubyazfohwggxshulodsq",
+					"worker": "f3rqpszb3c6k3t7zanml75pwzgzayfxsjciessg2l44f7nxvceqhiexixqj3ehs2luubyazfohwggxshulodsq",
+					"available": 6756191441753646000,
+					"availableStr": "6.7561 FIL",
+					"sectorsPledge": 2.0710319411108855e+21,
+					"sectorsPledgeStr": "2,071.0319 FIL",
+					"lockedFunds": 199048363369520960000,
+					"lockedFundsStr": "199.0483 FIL",
+					"feeDebtStr": "",
+					"ip": "",
+					"location": "",
+					"sectorSize": 34359738368,
+					"sectorSizeStr": "32GiB",
+					"sectorCount": 4770,
+					"activeCount": 4770,
+					"faultCount": 0,
+					"recoveryCount": 0,
+					"tag": "",
+					"isVerified": 0,
+					"msgCount": 12722,
+					"blocks": 62,
+					"winCount": 62,
+					"blockReward": 1290.279138889005,
+					"blockRewardStr": "1,290.2791 FIL",
+					"powerRank": 3118,
+					"createTime": "2021-10-22 20:36:00"
+				},
 				allData: {
 					"miner": "f03001",
 					"power": "4.656 TiB / 81.44 PiB (0.0055%)",
@@ -188,8 +276,9 @@
 				var hour = now.getHours();
 				var minute = now.getMinutes();
 				// return moment(new Date(unixTime* 1000)).fromNow();
-				return year + "-" + month.toString().padStart(2, 0) + "-" + date.toString().padStart(2, 0) + "   " + hour.toString().padStart(2, 0) + ":" +
-					minute.toString().padStart(2, 0) + ' | ' +moment(new Date(unixTime* 1000)).fromNow();
+				return year + "-" + month.toString().padStart(2, 0) + "-" + date.toString().padStart(2, 0) + "   " + hour
+					.toString().padStart(2, 0) + ":" +
+					minute.toString().padStart(2, 0) + ' | ' + moment(new Date(unixTime * 1000)).fromNow();
 			},
 			fixNumbers(a, n) {
 				//return a.replace("STAR",'');
@@ -202,11 +291,11 @@
 			this.initData();
 		},
 		methods: {
-			displayMore(){
-				if(this.num == 5){
+			displayMore() {
+				if (this.num == 5) {
 					this.num = this.baoData.blocks.length;
-				}else{
-				   this.num = 5;
+				} else {
+					this.num = 5;
 				}
 			},
 			initData() {
@@ -215,14 +304,23 @@
 					title: '加载中'
 				});
 				uni.request({
+					url: 'https://api2.filscout.com/api/v2/miner/f01390330',
+					method: 'POST',
+					success: (res) => {
+						console.log(res.data);
+						that.minerInfo = res.data.data;
+						uni.hideLoading();
+					}
+				});
+				/* uni.request({
 					url: api.getUrl + 'star/blockWin',
 					success: (res) => {
 						//console.log(res.data);
 						that.allData = res.data;
 						uni.hideLoading();
 					}
-				});
-				
+				}); */
+
 				//隐藏jobs列表
 				/* uni.request({
 					url: api.getUrl + 'star/getJobs',
@@ -233,68 +331,70 @@
 					}
 				}); */
 
-				uni.request({
+				/* uni.request({
 					url: api.getUrl + 'star/bao',
 					success: (res) => {
 						//console.log(res.data);
 						that.baoData = res.data;
 					}
-				});
-				
-				uni.request({
+				}); */
+
+				/* uni.request({
 					url: api.getUrl + 'star/bao2643',
 					success: (res) => {
 						//console.log(res.data);
 						that.baoData2643 = res.data;
 					}
-				});
+				}); */
 			}
 		}
 	}
 </script>
 
 <style>
-	.jobList{
+	.jobList {
 		font-size: 24rpx;
 	}
-	
-	.jobTopBar{
+
+	.jobTopBar {
 		display: flex;
 	}
-	
-	.jobTopBar view:nth-child(1){
+
+	.jobTopBar view:nth-child(1) {
 		width: 100rpx;
 	}
-	
-	.jobTopBar view:nth-child(2){
+
+	.jobTopBar view:nth-child(2) {
 		width: 200rpx;
 	}
-	
-	.jobTopBar view:nth-child(3){
+
+	.jobTopBar view:nth-child(3) {
 		width: 100rpx;
 	}
-	
-	.jobTopBar view:nth-child(4){
+
+	.jobTopBar view:nth-child(4) {
 		width: 150rpx;
 	}
-	.jobTopBar view:nth-child(5){
+
+	.jobTopBar view:nth-child(5) {
 		width: 180rpx;
 	}
-	.more{
+
+	.more {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		font-size: 28rpx;
 		padding: 30rpx;
 	}
-	
-	.refresh{
+
+	.refresh {
 		position: fixed;
 		z-index: 10;
-		top:40%;
+		top: 40%;
 		right: 5%;
 		background-color: #A880E3;
-		color:white;
+		color: white;
 		font-size: 30rpx;
 		display: flex;
 		justify-content: center;
@@ -303,11 +403,13 @@
 		width: 80rpx;
 		height: 80rpx;
 		padding: 20rpx;
-		box-shadow:0px 25rpx 20rpx -25rpx #000;
+		box-shadow: 0px 25rpx 20rpx -25rpx #000;
 	}
-	.baoItem>view:first-child{
+
+	.baoItem>view:first-child {
 		margin-right: 20rpx;
 	}
+
 	.baoList {
 		padding: 15rpx 0;
 		border-bottom: 3rpx solid #A880E3;
@@ -354,12 +456,11 @@
 		background: #FFFFFF;
 		box-shadow: 0rpx 4rpx 12rpx rgba(188, 188, 188, 0.5);
 		border-radius: 10rpx;
-		margin-top: 26rpx;
+		
 		box-sizing: border-box;
 		padding: 36rpx;
 		font-size: 28rpx;
 		position: relative;
-		/* height: 300rpx; */
 	}
 
 	.text {
