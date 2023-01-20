@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<web-view :webview-styles="webviewStyles" src="https://filestar.info/en/address/f02420"></web-view>
+		<web-view :webview-styles="webviewStyles" src="https://m.filscout.com/zh/miner/f01390330"></web-view>
 	</view>
 </template>
 

@@ -8,6 +8,11 @@ use phpseclib3\Net\SSH2;
 
 class Tiger extends BaseController
 {
+    public function index()
+    {
+        return json_encode(["info" => "ok"]);
+    }
+
     public function testssh2()
     {
         $ssh = new SSH2('192.168.2.52:22');

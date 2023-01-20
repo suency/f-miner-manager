@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "爆块信息"
+				"navigationBarTitleText": "基本信息"
 			}
 		},
 		{
@@ -69,7 +69,7 @@
 	        "pagePath": "pages/index/index",
 	        "iconPath": "static/images/home.png",
 	        "selectedIconPath": "static/images/home_s.png",
-	        "text": "爆块信息"
+	        "text": "基本信息"
 	    }, {
 	        "pagePath": "pages/workers/workers",
 	        "iconPath": "static/images/computer.png",

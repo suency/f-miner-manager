@@ -91,7 +91,11 @@
 				</view>
 			</view> -->
 		</view>
-
+		
+		<view style="margin-top: 40rpx;display: flex;">
+			<view class="ops" @click="getNode()">区块链浏览器</view>
+		</view>
+		
 		<view class="title" style="margin-top: 60rpx;" v-if="!hideJobs">
 			<view>主机任务({{jobs.length}})</view>
 			<view style="visibility: hidden;">主机任务</view>
@@ -291,6 +295,11 @@
 			this.initData();
 		},
 		methods: {
+			getNode(){
+				uni.navigateTo({
+					url:"../tiger/tiger"
+				})
+			},
 			displayMore() {
 				if (this.num == 5) {
 					this.num = this.baoData.blocks.length;
@@ -352,6 +361,19 @@
 </script>
 
 <style>
+	.ops{
+		width: 200rpx;
+		height: 54rpx;
+		background: #A880E3;
+		border-radius: 6rpx;
+		color:#FFFFFF;
+		font-size: 28rpx;
+		margin-right: 28rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
 	.jobList {
 		font-size: 24rpx;
 	}
